@@ -1,10 +1,10 @@
-import { ITEM_SLOT_NAME } from "@/constants";
+import { TypeItemSlotName } from "@/utils";
 import { BaseItem } from "./BaseItem";
 
 export type BaseEquipmentProps = {
   inventory: BaseItem[];
   bag: BaseItem[];
-  equipped: Map<(typeof ITEM_SLOT_NAME)[number], BaseItem>;
+  equipped: Map<TypeItemSlotName, BaseItem>;
 };
 
 export type BaseEquipmentDataProps = BaseEquipmentProps & {};
@@ -12,7 +12,7 @@ export type BaseEquipmentDataProps = BaseEquipmentProps & {};
 export class BaseEquipment implements Readonly<BaseEquipmentProps> {
   inventory: BaseItem[];
   bag: BaseItem[];
-  equipped: Map<(typeof ITEM_SLOT_NAME)[number], BaseItem>;
+  equipped: Map<TypeItemSlotName, BaseItem>;
 
   constructor(props: BaseEquipmentProps) {
     Object.assign(this, props);

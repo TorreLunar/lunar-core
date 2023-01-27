@@ -1,10 +1,10 @@
-import { MOB_CLASSES } from "@/constants";
+import { TypeMobClasses } from "@/utils";
 import { BaseAttributes } from "./BaseAttribute";
 import { BaseEquipment } from "./BaseEquipment";
 export interface MobBasedProps {
   name: string;
   level: number;
-  class: (typeof MOB_CLASSES)[number];
+  class: TypeMobClasses;
   attributes: BaseAttributes;
   equipment: BaseEquipment;
 }
@@ -15,7 +15,7 @@ export class MobBased implements Readonly<MobBasedProps> {
   name: string;
 
   level: number;
-  class: (typeof MOB_CLASSES)[number];
+  class: TypeMobClasses;
 
   attributes: BaseAttributes;
   equipment: BaseEquipment;
