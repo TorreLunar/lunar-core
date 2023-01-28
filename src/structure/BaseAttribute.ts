@@ -1,13 +1,11 @@
-import { Writable } from "@/utils";
-
 export interface BaseAttributesProps {
-  readonly health: number;
-  readonly defense: number;
-  readonly dexterity: number;
-  readonly strength: number;
+  health: number;
+  defense: number;
+  dexterity: number;
+  strength: number;
 }
 
-export type BaseAttributesDataProps = Writable<BaseAttributesProps> & {};
+export type BaseAttributesDataProps = BaseAttributesProps & {};
 
 export class BaseAttributes implements BaseAttributesProps {
   readonly health: number;
