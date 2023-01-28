@@ -1,37 +1,25 @@
-import { TypeItemCategory, TypeItemType } from "@/utils";
+import { TypeItemCategory, TypeItemType, TypeItemStats } from "@/utils";
 
-export interface BaseItemProps {
+export interface BaseItemProps<T> {
   name: string;
-
-  description: string;
-
+  description?: string;
   category: TypeItemCategory;
-
   type: TypeItemType;
-
   price: number;
 
-  stats: any;
+  stats: T;
 }
 
-export type BaseItemDataProps = BaseItemProps & {};
+export class BaseItem<Stats> implements BaseItemProps<Stats> {
+  readonly name: string;
+  readonly description?: string;
+  readonly stats: Stats;
+  readonly category: TypeItemCategory;
+  readonly type: TypeItemType;
+  readonly price: number;
 
-export class BaseItem implements Readonly<BaseItemProps> {
-  name: string;
-  description: string;
-
-  stats: any;
-
-  category: TypeItemCategory;
-
-  type: TypeItemType;
-
-  price: number;
-  constructor(props: BaseItemProps) {
+  constructor(props: BaseItemProps<Stats>) {
     Object.assign(this, props);
     Object.freeze(this);
-  }
-  static create(data: BaseItemDataProps): BaseItem {
-    return new BaseItem(data);
   }
 }
