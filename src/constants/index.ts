@@ -1,4 +1,4 @@
-export enum MOB_CLASSES {
+export enum MOB_JOB {
   MAGE = "Mage",
   WARRIOR = "Warrior",
   HUNTER = "Hunter",
