@@ -5,8 +5,6 @@ export interface BaseAttributesProps {
   strength: number;
 }
 
-export type BaseAttributesDataProps = BaseAttributesProps & {};
-
 export class BaseAttributes implements BaseAttributesProps {
   readonly health: number;
   readonly defense: number;
@@ -15,8 +13,5 @@ export class BaseAttributes implements BaseAttributesProps {
   constructor(props: BaseAttributesProps) {
     Object.assign(this, props);
     Object.freeze(this);
-  }
-  static create(data: BaseAttributesDataProps): BaseAttributes {
-    return new BaseAttributes(data);
   }
 }

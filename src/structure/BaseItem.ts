@@ -1,25 +1,48 @@
-import { TypeItemCategory, TypeItemType, TypeItemStats } from "@/utils";
+import {
+  TypeItemCategory,
+  TypeItemStats,
+  TypeItemRarity,
+  ITEM_TYPE,
+  TypeConsumableCategory,
+} from "@/utils";
+import { BaseItemConsumableEffect } from "./effects/BaseItemConsumable";
 
-export interface BaseItemProps<T> {
+export interface BaseItemProps<Stats, Type> {
   name: string;
   description?: string;
-  category: TypeItemCategory;
-  type: TypeItemType;
+  category: Type;
+  type: ITEM_TYPE;
   price: number;
+  drop_rate: number;
+  rarity: TypeItemRarity;
 
-  stats: T;
+  stats: Stats;
 }
 
-export class BaseItem<Stats> implements BaseItemProps<Stats> {
+export class BaseItem<
+  Stats extends TypeItemStats,
+  Category extends TypeItemCategory
+> implements BaseItemProps<Stats, Category>
+{
   readonly name: string;
   readonly description?: string;
-  readonly stats: Stats;
-  readonly category: TypeItemCategory;
-  readonly type: TypeItemType;
+  readonly category: Category;
+  readonly type: ITEM_TYPE;
   readonly price: number;
+  readonly drop_rate: number;
+  readonly rarity: TypeItemRarity;
 
-  constructor(props: BaseItemProps<Stats>) {
+  readonly stats: Stats;
+
+  constructor(props: BaseItemProps<Stats, Category>) {
     Object.assign(this, props);
     Object.freeze(this);
+  }
+
+  isConsumable(): this is BaseItem<
+    BaseItemConsumableEffect,
+    TypeConsumableCategory
+  > {
+    return this.type === ITEM_TYPE.CONSUMABLE;
   }
 }

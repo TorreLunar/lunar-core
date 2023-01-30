@@ -1,21 +1,13 @@
-import { ITEM_TYPE } from "@/constants";
-
 export interface BaseItemArmorStatProps {
-  type: ITEM_TYPE.ARMOR;
   protection: number;
 }
 
-export type BaseItemArmorStatDataProps = Omit<
-  BaseItemArmorStatProps,
-  "type"
-> & {};
+export type BaseItemArmorStatDataProps = BaseItemArmorStatProps & {};
 
 export class BaseItemArmorStat implements Readonly<BaseItemArmorStatProps> {
-  readonly type: ITEM_TYPE.ARMOR;
   readonly protection: number;
 
-  constructor(props: Omit<BaseItemArmorStatDataProps, "type">) {
-    this.type = ITEM_TYPE.ARMOR;
+  constructor(props: BaseItemArmorStatDataProps) {
     this.protection = props.protection;
 
     Object.freeze(this);

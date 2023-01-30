@@ -1,31 +1,18 @@
-import { TypeMobJob } from "@/utils";
-import { BaseAttributes } from "./BaseAttribute";
+import { BaseEntity, BaseEntityProps } from "./BaseEntity";
 import { BaseEquipment } from "./BaseEquipment";
-export interface BaseMobProps {
-  name: string;
-  level: number;
-  job: TypeMobJob;
-  attributes: BaseAttributes;
-  equipment: BaseEquipment;
+import { BaseItem } from "./BaseItem";
+
+export interface BaseMobProps extends BaseEntityProps<BaseEquipment> {
+  description: string;
+  drop_enable: boolean;
+  drops: BaseItem<any, any>[];
 }
 
-export type BaseMobDataProps = BaseMobProps & {};
-
-export class BaseMob implements Readonly<BaseMobProps> {
-  name: string;
-
-  level: number;
-  job: TypeMobJob;
-
-  attributes: BaseAttributes;
-  equipment: BaseEquipment;
-
+export class BaseMob extends BaseEntity<BaseEquipment> implements BaseMobProps {
+  description: string;
+  drop_enable: boolean;
+  drops: BaseItem<any, any>[];
   constructor(data: BaseMobProps) {
-    Object.assign(this, data);
-    Object.freeze(this);
-  }
-
-  static create(data: BaseMobDataProps): BaseMob {
-    return new BaseMob(data);
+    super(data);
   }
 }
