@@ -1,3 +1,7 @@
+export const LEVEL_INITIAL_PLAYER = 1;
+export const SKILL_POINTS_INITIAL_PLAYER = 0;
+
+// MOBS
 export enum MOB_JOB {
   MAGE = "Mage",
   WARRIOR = "Warrior",
