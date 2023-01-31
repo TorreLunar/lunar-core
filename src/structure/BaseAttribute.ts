@@ -3,6 +3,7 @@ export interface BaseAttributesProps {
   defense: number;
   dexterity: number;
   strength: number;
+  wisdom: number;
 }
 
 export class BaseAttributes implements BaseAttributesProps {
@@ -10,6 +11,7 @@ export class BaseAttributes implements BaseAttributesProps {
   readonly defense: number;
   readonly dexterity: number;
   readonly strength: number;
+  readonly wisdom: number;
   constructor(props: BaseAttributesProps) {
     Object.assign(this, props);
     Object.freeze(this);
