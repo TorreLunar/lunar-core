@@ -1,12 +1,9 @@
 import { Mob } from "@/entities/Mob";
 import { Player } from "@/entities/Player";
 
-export interface MobManagerProps {
-  name: string;
-}
-
-export class MobManager {
+export class EntityManager {
   constructor(data: any) {
+    if (!data) throw new Error("[EntityManager]: data is invalid");
     Object.assign(this, data);
   }
 
