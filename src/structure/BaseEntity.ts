@@ -27,4 +27,23 @@ export class BaseEntity<Equipment = any> implements BaseEntityProps<Equipment> {
     this.attributes = data.attributes;
     this.equipment = data.equipment;
   }
+  static _verify({
+    name,
+    attributes,
+    health_points,
+    equipment,
+    level,
+    job,
+  }: BaseEntityProps<any>) {
+    if (
+      !name ||
+      !attributes ||
+      !health_points ||
+      !equipment ||
+      !level ||
+      !job
+    ) {
+      throw new Error("[BaseEntity]:some parameter is invalid");
+    }
+  }
 }

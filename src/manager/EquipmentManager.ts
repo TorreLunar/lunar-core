@@ -1,18 +1,16 @@
-import { BaseEquipmentPlayer } from "@/structure/BaseEquipmentPlayer";
+import { BaseEquipmentMob } from "@/structure/equipment/BaseEquipmentMob";
+import { BaseEquipmentPlayer } from "@/structure/equipment/BaseEquipmentPlayer";
 
-import { BaseEquipment, BaseEquipmentProps } from "@/structure/BaseEquipment";
-
-export class EquipmentManager extends BaseEquipment {
-  constructor(data: BaseEquipmentProps) {
-    super(data);
+export class EquipmentManager {
+  constructor(data: any) {
+    Object.assign(this, data);
   }
 
   isEquipmentPlayer(): this is BaseEquipmentPlayer {
-    return "addInventory" in this;
+    return "inventory" in this;
+  }
+
+  isEquipmentMob(): this is BaseEquipmentMob {
+    return !("inventory" in this);
   }
 }
-
-Object.setPrototypeOf(
-  EquipmentManager.prototype,
-  BaseEquipmentPlayer.prototype
-);

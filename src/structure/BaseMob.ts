@@ -1,5 +1,5 @@
 import { BaseEntity, BaseEntityProps } from "./BaseEntity";
-import { BaseEquipment } from "./BaseEquipment";
+import { BaseEquipment } from "./equipment/BaseEquipment";
 import { BaseItem } from "./BaseItem";
 
 export interface BaseMobProps extends BaseEntityProps<BaseEquipment> {
@@ -14,5 +14,8 @@ export class BaseMob extends BaseEntity<BaseEquipment> implements BaseMobProps {
   drops: BaseItem<any, any>[];
   constructor(data: BaseMobProps) {
     super(data);
+    this.description = data.description;
+    this.drops = data.drops;
+    this.drop_enable = data.drop_enable;
   }
 }

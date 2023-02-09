@@ -1,6 +1,6 @@
 import { AttributeManager } from "@/manager";
 import { BaseAttributes } from "@/structure";
-import { BaseEquipmentPlayer } from "@/structure/BaseEquipmentPlayer";
+import { BaseEquipmentPlayer } from "@/structure/equipment/BaseEquipmentPlayer";
 import { BasePlayer, BasePlayerProps } from "@/structure/BasePlayer";
 import { LEVEL_INITIAL_PLAYER, SKILL_POINTS_INITIAL_PLAYER } from "@/utils";
 

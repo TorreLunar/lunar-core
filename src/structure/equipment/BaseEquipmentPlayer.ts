@@ -1,12 +1,12 @@
-import { TypeConsumableCategory, TypeItemSlotName } from "@/utils";
-import { BaseEquipment } from "./BaseEquipment";
-import { BaseItem } from "./BaseItem";
-import { BaseItemConsumableEffect } from "./effects/BaseItemConsumable";
+import { BaseEquipment, BaseEquipmentProps } from "./BaseEquipment";
+import { BaseItemConsumableEffect } from "../effects/BaseItemConsumable";
+import { BaseItem } from "../BaseItem";
 
-export type BaseEquipmentPlayerProps = {
+import { TypeConsumableCategory } from "@/utils";
+
+export type BaseEquipmentPlayerProps = BaseEquipmentProps & {
   inventory: BaseItem<any, any>[];
   bag: BaseItem<BaseItemConsumableEffect, TypeConsumableCategory>[];
-  equipped: Map<TypeItemSlotName, BaseItem<any, any>>;
 };
 
 export type BaseEquipmentDataProps = BaseEquipmentPlayerProps & {};
@@ -15,6 +15,8 @@ export class BaseEquipmentPlayer
   extends BaseEquipment
   implements BaseEquipmentPlayerProps
 {
+  inventory: BaseItem<any, any>[];
+  bag: BaseItem<BaseItemConsumableEffect, "HEALING" | "PROTECTION">[];
   constructor(data: BaseEquipmentPlayerProps) {
     super(data);
   }

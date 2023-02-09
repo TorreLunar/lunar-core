@@ -1,5 +1,5 @@
 import { BaseEntity, BaseEntityProps } from "./BaseEntity";
-import { BaseEquipmentPlayer } from "./BaseEquipmentPlayer";
+import { BaseEquipmentPlayer } from "./equipment/BaseEquipmentPlayer";
 
 export type BasePlayerProps = BaseEntityProps<BaseEquipmentPlayer> & {
   nation: string;
